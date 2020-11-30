@@ -1,17 +1,18 @@
 const { validationResult } = require("express-validator");
 const Note = require("../models/notes")
 //get all notes
-module.exports.getNotesController =  async (req, res) => {
+module.exports.getNotesController =  async (req, res, next) => {
     try {
       const notes = await Note.find();
       res.send(notes);
     } catch (err) {
-      return res.status(500).send(err);
+      // return res.status(500).send(err);
+      next(err);
     }
   }
 
 //single notes
-module.exports.getNoteController = async (req, res) => {
+module.exports.getNoteController = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).send(errors.array());
@@ -22,12 +23,13 @@ module.exports.getNoteController = async (req, res) => {
       if (!note) return res.status(404).send("No Not Found");
       res.send(note);
     } catch (err) {
-      return res.status(500).send(err);
+      // return res.status(500).send(err);
+      next(err);
     }
   }
 
 //add note
-module.exports.addNoteController = async (req, res) => {
+module.exports.addNoteController = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).send(errors.array());
@@ -41,12 +43,13 @@ module.exports.addNoteController = async (req, res) => {
       res.send(note);
     } catch (err) {
       // res.status(400).send("Something failed in server and data can't be saved")
-      res.status(400).send(err);
+      // res.status(400).send(err);
+      next(err);
     }
   }
 
 //update note
-module.exports.updateNoteController = async (req, res) => {
+module.exports.updateNoteController = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(404).send(errors.array());
@@ -70,12 +73,13 @@ module.exports.updateNoteController = async (req, res) => {
       if (!note) return res.status(404).send("Note not found and cannot be updated");
       res.send(note);
     } catch (err) {
-      return res.status(500).send(err);
+      // return res.status(500).send(err);
+      next(err);
     }
   }
 
 //delete note
-module.exports.deleteNoteController = async (req, res) => {
+module.exports.deleteNoteController = async (req, res, next) => {
 
     const errors = validationResult(req);
     if(!errors.isEmpty()){
@@ -91,6 +95,7 @@ module.exports.deleteNoteController = async (req, res) => {
     if(!note) return res.status(404).send("Note Not Found and cannot be deleted");
     res.send(note);
    }catch (err) {
-     return res.status(500).send(err);
+    //  return res.status(500).send(err);
+    next(err);
    }
   }

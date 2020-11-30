@@ -1,9 +1,12 @@
 const express = require("express");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const app = express();
 
+//error middleware
+const { error } = require("./middleware/error");
+
 //dotenv file
-require('dotenv').config({ path: './config/keys.env' })
+require("dotenv").config({ path: "./config/keys.env" });
 //DB
 const { connectionDB } = require("./db/connection");
 
@@ -28,6 +31,7 @@ const port = process.env.PORT || 2020;
 app.use("/notes", notesRoute);
 app.use("/users", usersRoute);
 app.use("/", indexRoute);
+app.use(error);
 
 app.listen(port, () => {
   console.log(`Server in created and listening on port ${port}`);
