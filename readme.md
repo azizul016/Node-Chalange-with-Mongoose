@@ -1,11 +1,14 @@
 # Node-Chalange-with-Mongoose
 <h1>Back-End Application </h1>
-All API:
-Root-API:   <a target="_blank" https://mongoose-task-app.herokuapp.com/</a>
-NOTES-API:  <a target="_blank" https://mongoose-task-app.herokuapp.com/notes </a>
-User-API:   <a target="_blank" https://mongoose-task-app.herokuapp.com/users </a>
-LOGEDIN-API: <a target="_blank" https://mongoose-task-app.herokuapp.com/users/login </a>
-LOGEDOUT-API: <a target="_blank" https://mongoose-task-app.herokuapp.com/users/logout </a>
+<h2>All API</h2>
+
+<ul>
+   <li><a target="_blank" https://mongoose-task-app.herokuapp.com/>Root-API</a>
+   <li><a target="_blank" https://mongoose-task-app.herokuapp.com/notes>NOTES-API</a>
+   <li><a target="_blank" https://mongoose-task-app.herokuapp.com/users>User-API</a>
+   <li><a target="_blank" https://mongoose-task-app.herokuapp.com/users/login>LOGEDIN-API</a>
+   <li><a target="_blank" https://mongoose-task-app.herokuapp.com/users/logout>LOGEDOUT-API</a>
+</ul>
    
 <h2>Description </h2>
 <ul>
